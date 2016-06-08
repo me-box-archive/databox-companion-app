@@ -1,0 +1,2 @@
+ export const HEADER_TOOLBAR_HEIGHT = 40;
+ export const FOOTER_TOOLBAR_HEIGHT = 40;
