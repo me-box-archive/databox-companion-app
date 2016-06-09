@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {HEADER_TOOLBAR_HEIGHT,FOOTER_TOOLBAR_HEIGHT} from '../constants/ViewConstants';
 import '../../css/style.css';
+import cx from 'classnames';
 
 class AppContent extends Component {
 	
@@ -12,21 +14,7 @@ class AppContent extends Component {
 	render() {
 	
 		const flexcontainer = {
-			height: 'calc(100vh - 80px)',
-			display: '-webkit-flex',
-   			display: 'flex',
-   			WebkitFlexDirection: 'column',
-   			flexDirection: 'column',
-		}
-
-		const flexitem = {
-			height: 100,
-			width: '100vw',
-			background: '#e46119',
-			border: '1px solid #626262',
-			margin: 3,
-			WebkitFlex: '1 0 0', 
-   			flex: '1 0 0', 
+			height: `calc(100vh - ${HEADER_TOOLBAR_HEIGHT+FOOTER_TOOLBAR_HEIGHT}px)`,
 		}
 
 		const { apps, dispatch } = this.props;
@@ -34,10 +22,17 @@ class AppContent extends Component {
 	    	const data = app.data.map((data,j)=>{
 	    		return <li key ={j}>{data.toString()}</li>
 	    	})
-	    	return <div key={i} style={flexitem}>{app.name}</div>
+	    	const {view} =  app;
+	    	
+	    	const classname = cx({
+	    		flexitem: true,
+	    		[view]:true,
+	    	})
+
+	    	return <div key={i} className={classname}>{app.name}</div>
 	    });
 
-	    return <ReactCSSTransitionGroup style={flexcontainer} transitionName="flexitem" transitionEnterTimeout={500} transitionLeaveTimeout={300}>{applist}</ReactCSSTransitionGroup>
+	    return <ReactCSSTransitionGroup className="flexcontainer" style={flexcontainer} transitionName="flexitem" transitionEnterTimeout={500} transitionLeaveTimeout={300}>{applist}</ReactCSSTransitionGroup>
          	
          	
 	   }

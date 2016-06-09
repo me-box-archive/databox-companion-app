@@ -4,17 +4,23 @@ import {sendmessage} from './websocket';
 let counter = 0;
 
 export default function init(){
-	console.log("nice, initing the mqtt client");
-
+	
 	const client = mqtt.connect('mqtt://localhost:1883')
 	
-	
 	client.on('connect', () => {  
-  		client.subscribe('appmessage')
+  		client.subscribe('webapp')
 	})
 
 	client.on('message', (topic, message) => {  
-		console.log(JSON.parse(message.toString()));
-		sendmessage("testApp", "databox", "message", {id:counter++, name: `a new app(${counter})`, view:'list', data: {"some":"data"}})
+		try {
+			console.log(message);
+			const msg = JSON.parse(message.toString());
+			console.log("OK now message is");
+			console.log(msg);
+			sendmessage("testApp", "databox", "message", msg)
+		}
+		catch(err){
+			console.log(err);
+		}
 	});
 }

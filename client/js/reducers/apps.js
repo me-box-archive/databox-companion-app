@@ -34,7 +34,7 @@ const app = (state, action) =>{
 	}
 }
 
-export default function apps(state = [{id:4, name:"app one name", view:"list", data:[{"some data":"already here!"}]}, {id:6, name:"app two name", view:"chart", data:[{"and data":"here too!"}]}], action) {
+export default function apps(state = [], action) {
   	switch (action.type) {
 	  
 	  case APP_MESSAGE:

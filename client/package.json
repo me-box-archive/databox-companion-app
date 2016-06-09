@@ -48,6 +48,7 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-dom": "^15.1.0",
