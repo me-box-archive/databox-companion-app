@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {HEADER_TOOLBAR_HEIGHT,FOOTER_TOOLBAR_HEIGHT} from '../constants/ViewConstants';
 import '../../css/style.css';
 import cx from 'classnames';
+import List from '../components/List';
 
 class AppContent extends Component {
 	
@@ -18,18 +19,41 @@ class AppContent extends Component {
 		}
 
 		const { apps, dispatch } = this.props;
+
 	    const applist = apps.map((app,i)=>{
-	    	const data = app.data.map((data,j)=>{
-	    		return <li key ={j}>{data.toString()}</li>
-	    	})
-	    	const {view} =  app;
 	    	
+	    	let dataview;
+
+	    	switch (app.view){	    		
+	    		case 'list':
+	    			
+	    			const data = app.data[app.data.length-1];
+	    			const props = {keys: data.keys, rows: data.rows};
+					dataview = <List {...props}/>
+
+	    			/*dataview = app.data.map((item)=>{
+	    				const props = {keys: item.keys, rows: item.rows};
+	    				return <List {...props}/>
+	    			})*/
+	    			
+	    			break;
+	    	
+	    	}
+
+	    	const {view} =  app;
+
 	    	const classname = cx({
 	    		flexitem: true,
 	    		[view]:true,
 	    	})
 
-	    	return <div key={i} className={classname}>{app.name}</div>
+	    	return <div>
+	    				<div key={i} className={classname}>
+	    					{app.name}
+							{dataview}
+	    				</div>
+	    				
+	    		   </div>
 	    });
 
 	    return <ReactCSSTransitionGroup className="flexcontainer" style={flexcontainer} transitionName="flexitem" transitionEnterTimeout={500} transitionLeaveTimeout={300}>{applist}</ReactCSSTransitionGroup>

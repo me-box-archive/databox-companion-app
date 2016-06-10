@@ -6,8 +6,14 @@ const addIfNew = (state, action) =>{
 
 		case APP_MESSAGE:
 		
+			//can make this more efficient if need 
 			if (state.map(t=>{return t.id}).indexOf(action.id) !== -1){
-				return state;
+				return state.map(t=>{
+					if (t.id === action.id){
+						t.name = action.name;
+					}
+					return t;
+				});
 			}
 			return [...state, {id:action.id, name:action.name, view:action.view, data:[]}]
 
