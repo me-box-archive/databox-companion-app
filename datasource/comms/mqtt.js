@@ -30,7 +30,7 @@ const generateBulbData = ()=> {
 }
 
 const generateUtensilData = ()=> {
-
+	
 	return JSON.stringify({
 						  	id: "ds/utensils",
 						  	timestamp: Date.now(),
@@ -42,7 +42,7 @@ const generateUtensilData = ()=> {
 }
 
 const generateFMCGData = ()=> {
-	
+
 	var product = products[Math.floor(8 * Math.random())];
 	product.value = "moved";
 
