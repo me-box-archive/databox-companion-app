@@ -14,7 +14,7 @@ class List extends Component {
 		var rows = this.props.rows.map((item,i)=>{
 			
 			var col = this.props.keys.map(function(key,j){
-				return <td key={j}>{item[key]}</td>
+				return <td key={j}>{item[key] || ""}</td>
 			});
 
 			return <tr key={i}>{col}</tr>
