@@ -30,11 +30,6 @@ class AppContent extends Component {
 	    			const data = app.data[app.data.length-1];
 	    			const props = {keys: data.keys, rows: data.rows};
 					dataview = <List {...props}/>
-
-	    			/*dataview = app.data.map((item)=>{
-	    				const props = {keys: item.keys, rows: item.rows};
-	    				return <List {...props}/>
-	    			})*/
 	    			
 	    			break;
 	    	

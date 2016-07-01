@@ -11,7 +11,8 @@ function getEntrySources(sources) {
 
 module.exports = {
     devServer: {
-        headers: { "Access-Control-Allow-Origin": "localhost:*" }
+        headers: { "Access-Control-Allow-Origin": "localhost:*" },
+        historyApiFallback: true 
     },
     entry: {
         app: getEntrySources([
@@ -25,6 +26,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
             { test: /\.css$/, loaders: ['style', 'css'] }
         ]
     },

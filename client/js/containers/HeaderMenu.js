@@ -6,8 +6,10 @@ export default class Menu extends Component {
   render(){
   
     return (
-      <div>
-        <p> a menu </p>      
+      <div className="header">
+        <div className="centered">
+        	databox app
+        </div>
       </div>
     )
   }
