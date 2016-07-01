@@ -14,6 +14,15 @@ const products = [
 					];
 
 
+const generateTemperatureData = (tag)=>{
+	return JSON.stringify({
+							"id": "temperature/" + tag,
+							"time": (new Date()).toISOString(),
+							"value": (15 + Math.random() * 10).toFixed(1),
+							"unit":"degrees celcius"
+						})
+}
+
 const generateBulbData = ()=> {
 
 	return JSON.stringify({
@@ -70,6 +79,18 @@ export default function init(){
 	const slowmax = 60000;
 
 	client.on('connect', () => {  
+  		
+  		setInterval(() => {
+  			client.publish('temperature/TA', generateTemperatureData("TA"))
+  		}, Math.random() * (fastmax - fastmin) + fastmin) 
+  		
+  		setInterval(() => {
+  			client.publish('temperature/TB', generateTemperatureData("TB"))
+  		}, Math.random() * (fastmax - fastmin) + fastmin) 
+  		
+  		setInterval(() => {
+  			client.publish('temperature/TC', generateTemperatureData("TC"))
+  		}, Math.random() * (fastmax - fastmin) + fastmin) 
   		
   		setInterval(() => {
   			client.publish('ds/bulbs', generateBulbData())

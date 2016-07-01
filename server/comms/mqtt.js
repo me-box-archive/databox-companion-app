@@ -13,10 +13,7 @@ export default function init(){
 
 	client.on('message', (topic, message) => {  
 		try {
-			console.log(message);
 			const msg = JSON.parse(message.toString());
-			console.log("OK now message is");
-			console.log(msg);
 			sendmessage("testApp", "databox", "message", msg)
 		}
 		catch(err){
