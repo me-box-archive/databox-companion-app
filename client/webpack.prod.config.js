@@ -1,6 +1,3 @@
-//perhaps better to create a couple of files, rather than doing different stuff dependent
-//on whether dev or prod!
-
 var path = require("path");
 var webpack = require("webpack");
 
@@ -15,7 +12,6 @@ module.exports = {
         filename: '[name].js'
     },
 
-    //annot uglify as this craps up dynamic module loading it seems
     module: {
         loaders: [
                 { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
@@ -28,7 +24,7 @@ module.exports = {
         ]
     },
 
-    //plugins: [new webpack.DefinePlugin({
-    //        'process.env.NODE_ENV': JSON.stringify('production')
-    //})]
+    plugins: [new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+    })]
 };
