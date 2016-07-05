@@ -43,18 +43,18 @@ class List extends Component {
 				return <div className={className}><div className="centered">{item[key]}</div></div>
 			});
 			return <div>
-				<div className="flexrow">
+				<div className="row">
 					{items}
 				</div>
 			</div>
 		});	
 		
-		return 	<div className="flexcolumn">
+		return 	<div className="column">
 						<div style={titlebar}>
 							<div className="centered">{this.props.title}</div>
 						</div>
 						<div>
-							<div className="flexrow">{heading}</div>
+							<div className="row">{heading}</div>
 						</div>
 						{rows}
 					</div>

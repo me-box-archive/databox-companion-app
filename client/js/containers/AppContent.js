@@ -51,7 +51,7 @@ class AppContent extends Component {
 	    		   </div>
 	    });
 
-	    return <ReactCSSTransitionGroup className="flexcontainer" style={flexcontainer} transitionName="flexitem" transitionEnterTimeout={500} transitionLeaveTimeout={300}>{applist}</ReactCSSTransitionGroup>
+	    return <ReactCSSTransitionGroup className="container" style={flexcontainer} transitionName="flexitem" transitionEnterTimeout={500} transitionLeaveTimeout={300}>{applist}</ReactCSSTransitionGroup>
          	
          	
 	   }
