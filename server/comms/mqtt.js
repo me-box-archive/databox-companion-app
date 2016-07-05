@@ -5,7 +5,7 @@ let counter = 0;
 
 export default function init(){
 	
-	const client = mqtt.connect('mqtt://localhost:1883')
+	const client = mqtt.connect('mqtt://mosquitto:1883')
 	
 	client.on('connect', () => {  
   		client.subscribe('webapp')
