@@ -28,11 +28,15 @@ class AppStore extends Component {
 	    	background: '#f2f2f2'
 	    }
 
+	    const wider = {
+	    	width: 150,
+	    }
+
 	    const {apps, dispatch} = this.props;
 
 	    const header = <div style={headerstyle}>
 	    					<div className="row">
-	    						<div className="title">
+	    						<div className="title" style={wider}>
 									<div className="centered">
 		    							name
 		    						</div>
@@ -47,14 +51,19 @@ class AppStore extends Component {
 		    							author
 		    						</div>
 	    						</div>
+	    						<div>
+									<div className="centered">
+		    							install
+		    						</div>
+	    						</div>
 	    					</div>
 	    			    </div>
 
 
-	    const list = apps.map((a)=>{
-	    	return  <div>
+	    const list = apps.map((a,i)=>{
+	    	return  <div key={i}>
 		    			<div className="row">
-		    				<div className="title">
+		    				<div className="title" style={wider}>
 		    					<div className="centered">
 		    						{a.manifest.name}
 		    					</div>
@@ -71,7 +80,7 @@ class AppStore extends Component {
 		    				</div>
 		    				<div>
 		    					<div className="centered">
-		    						<Link to="/install/1">install</Link>
+		    						<Link to={`/install/${a.manifest.id}`}>install</Link>
 		    					</div>
 		    				</div>
 		    		   </div>
@@ -100,7 +109,7 @@ class AppStore extends Component {
 
 function select(state) {
   return {
-    apps: state.appstore.apps,
+    apps: state.appstore,
   };
 }
 

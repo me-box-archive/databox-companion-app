@@ -52,6 +52,7 @@ export default function init(nsps, server){
 
 export function sendmessages(rooms, namespace, event, message){
   rooms.forEach(function(room){
+      console.log("sending message!");
       this.sendmessage(room,namespace,event,message);
   }.bind(this));
   return rooms.length;

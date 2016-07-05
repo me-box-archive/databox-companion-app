@@ -2,10 +2,6 @@ import request from 'superagent';
 import {FETCHED_APPSTORE_LIST, FETCHING_APPSTORE_LIST} from '../constants/ActionTypes';
 import config from '../config';
 
-
-console.log("config is");
-console.log(config);
-
 export function fetchedAppStoreList(list){
 	return {
 		type : FETCHED_APPSTORE_LIST,

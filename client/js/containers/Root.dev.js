@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import App from './App';
 import Apps from './Apps';
-import Installer from '../components/Installer';
+import Installer from './Installer';
 import AppStore from './AppStore';
 import DevTools from './DevTools';
 import { IndexRedirect, Router, Route, browserHistory } from 'react-router';

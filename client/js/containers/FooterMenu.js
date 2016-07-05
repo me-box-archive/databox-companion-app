@@ -7,12 +7,12 @@ class FooterMenu extends Component {
   render(){
   	console.log(this.context.router);
 
-  	const links = ['apps', 'appstore'].map((link)=>{
+  	const links = ['apps', 'appstore'].map((link,i)=>{
   		const className = cx({
   			active: this.context.router.isActive(link, true)
   		})
 
-  		return <div className={className}>
+  		return <div key={i} className={className}>
         	<div className="centered">
         		<Link to={link}>{link}</Link>
         	</div>

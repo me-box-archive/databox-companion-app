@@ -58,6 +58,17 @@ a {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.column > .contentheader {
+  display: flex;
+  flex: 0 0 auto;
+  height: $TOOLBARHEIGHT/2;
+  background: $content-header-background-colour;
+  color: $content-header-colour;
+  text-transform: uppercase;
+  font-size: 1em;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .column > .footer {
   display: flex;
   flex: 0 0 auto;
