@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t databox-companion-app .
+docker build --no-cache -t databox-companion-app .
