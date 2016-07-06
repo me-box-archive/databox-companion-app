@@ -4,8 +4,26 @@ import config from '../config';
 
 
 export function install(app){
+	
+	console.log("----> installing...");
+	console.log(app.manifest.name);
 
+	return function (dispatch, getState) { 
 
+		request
+  			.get('/app/install')
+  			.query({name:app.manifest.name})
+  			.set('Accept', 'application/json')
+  			.type('json')
+  			.end(function(err, res){
+  				if (err){
+  					console.log(err);
+  				}else{
+  					console.log(res.body);
+  	 			}
+  	 		});		
+
+	}	
 }
 
 export function selectApptoInstall(appId){

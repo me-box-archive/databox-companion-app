@@ -238,7 +238,7 @@ export default class Installer extends Component {
 								</div>
 								<div>
 									<div className="centered">
-										<div className="button selected" onClick={this.install}>INSTALL!</div>
+										<div className="button selected" onClick={this.install.bind(this,app)}>INSTALL!</div>
 									</div>
 								</div>
 							</div>
