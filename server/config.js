@@ -1,6 +1,6 @@
 module.exports = {
 	containermanager:{
-		API: 'docker0:8081'
+		API: 'localhost:8081'
 	},
 
 	registry:{
