@@ -4,7 +4,6 @@ import {sendmessage} from './websocket';
 let counter = 0;
 
 export default function init(){
-//set back to mosquitto!	
 	const client = mqtt.connect('mqtt://localhost:1883')
 	
 	client.on('connect', () => {  
