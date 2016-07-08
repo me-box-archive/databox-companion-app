@@ -77,9 +77,6 @@ export function launchApp(name){
 
 
 export function install(app){
-	
-	console.log("----> installing...");
-	console.log(app.manifest.name);
 
 	return function (dispatch, getState) { 
 
@@ -105,6 +102,7 @@ export function install(app){
      		});
 	}	
 }
+
 /*
 export function install(app){
 

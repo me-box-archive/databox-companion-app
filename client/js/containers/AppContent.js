@@ -16,6 +16,7 @@ class AppContent extends Component {
 	
 		const flexcontainer = {
 			height: `calc(100vh - ${HEADER_TOOLBAR_HEIGHT+FOOTER_TOOLBAR_HEIGHT}px)`,
+			width: `calc(100vw - 5px)`,
 		}
 
 		const { apps, dispatch } = this.props;
@@ -28,7 +29,12 @@ class AppContent extends Component {
 	    		case 'list':
 	    			
 	    			const data = app.data[app.data.length-1];
-	    			const props = {keys: data.keys, rows: data.rows};
+	    			const props = {title: app.name, keys: data.keys, rows: data.rows.map((row)=>{
+	    				if (row.time){
+	    					row.time = new Date(row.time).toLocaleString();
+	    				}
+	    				return row;
+	    			})};
 					dataview = <List {...props}/>
 	    			
 	    			break;
@@ -42,9 +48,8 @@ class AppContent extends Component {
 	    		[view]:true,
 	    	})
 
-	    	return <div>
-	    				<div key={i} className={classname}>
-	    					{app.name}
+	    	return <div style={{width:'inherit'}}>
+	    				<div key={i} className={classname} style={{width:'inherit'}}>
 							{dataview}
 	    				</div>
 	    				
