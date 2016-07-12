@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import * as InstallerActions from '../actions/InstallerActions';
 import {HEADER_TOOLBAR_HEIGHT, FOOTER_TOOLBAR_HEIGHT} from '../constants/ViewConstants';
+import '../../style/font-awesome/css/font-awesome.min.css';
 
 export default class Installer extends Component {
 	
@@ -28,13 +29,23 @@ export default class Installer extends Component {
 			height: HEADER_TOOLBAR_HEIGHT,
 		}
  		const headerstyle ={
+ 			WebkitFlex: '0 0 auto',
 	    	flex: '0 0 auto',
 	    	height: 60,
 	    	background: '#f2f2f2'
 	    }
 	    const checkwidth ={
+	    	WebkitFlex: '0 0 auto',
 	    	flex: '0 0 auto',
 	    	width: 50,
+	    }
+
+	    const stars = {
+	    	color: 'red',
+	    	WebkitFlex: '0 0 auto',
+	    	flex: '0 0 auto',
+	    	width: 180,
+	    	fontSize: '1.3em',
 	    }
 
 	    const textleft ={
@@ -182,9 +193,13 @@ export default class Installer extends Component {
 										</div>
 									</div>
 								</div>
-								<div>
+								<div style={stars}>
 									<div className="centered">
-										* * * *
+										<i className="fa fa-star"></i>
+										<i className="fa fa-star"></i>
+										<i className="fa fa-star"></i>
+										<i className="fa fa-star"></i>
+										<i className="fa fa-star-half"></i>
 									</div>
 								</div>
 							</div>

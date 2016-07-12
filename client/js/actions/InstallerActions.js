@@ -1,57 +1,15 @@
 import request from 'superagent';
 import { TOGGLE_APP_RESOURCE, SELECT_APP_TO_INSTALL} from '../constants/ActionTypes';
 import config from '../config';
-import {INSTALL_PULLING_APP, INSTALL_PULLING_APP_ERROR,INSTALL_LAUNCHING_APP, INSTALL_LAUNCHING_APP_ERROR,  INSTALL_LAUNCHED_APP} from '../constants/ActionTypes'; 
+import {INSTALL_LAUNCHED_APP} from '../constants/ActionTypes'; 
+import {networkAccess, networkError, networkSuccess} from './NetworkActions';
 
-export function pullingApp(name){
-
-    console.log("pulling app!!!");
-	
-	return {
-		type: INSTALL_PULLING_APP,
-		name
-	}
-}
-
-export function errorPullingApp(name){
-	console.log("error pulling app!!!");
-	return{
-		type: INSTALL_PULLING_APP_ERROR,
-		name
-	}
-}
-
-export function launchingApp(name){
-	console.log("launching app!!!");
-	return{
-		type: INSTALL_LAUNCHING_APP,
-		name
-	}
-}
-
-export function errorLaunchingApp(name){
-	console.log("error launching app!!!");
-	return{
-		type: INSTALL_LAUNCHING_APP_ERROR,
-		name
-	}
-}
-
-export function launchedApp(result){
-	console.log("error launched app!!!");
-	return {
-		INSTALL_LAUNCHED_APP,
-		result
-	}
-}
 
 export function launchApp(name){
 
-	
-	console.log("launch app called!");
-
 	return function (dispatch, getState) { 
-		dispatch(launchingApp());
+
+		dispatch(networkAccess(`launching app ${name}`));
 
 		request
 			.post(`${config.containermanager.API}/launch-container`)
@@ -64,23 +22,20 @@ export function launchApp(name){
      			if (err) {
        				console.log('error launching  app');
        				console.log(err);
-       				dispatch(errorLaunchingApp());
+       				dispatch(networkError(`error launching app ${name}`));
      			} 
      			else {
-     				console.log(data.body);
-     			 	dispatch(launchedApp(data.body))
+     				dispatch(networkSuccess(`successfully launched app ${name}`));
      			}
      		});
     }	
 }
 
-
-
 export function install(app){
 
 	return function (dispatch, getState) { 
 
-		dispatch(pullingApp(app.manifest.name));
+		dispatch(networkAccess(`pulling app ${app.manifest.name}`));
 
 		request
    			.post(`${config.containermanager.API}/pull-app`)
@@ -93,7 +48,7 @@ export function install(app){
    				
      			if (err) {
      				console.log(err);
-       				dispatch(errorPullingApp(err));
+     				dispatch(networkError(`error pulling app ${app.manifest.name}`));
      			} 
      			else {
      				//console.log(data.body);
@@ -102,27 +57,6 @@ export function install(app){
      		});
 	}	
 }
-
-/*
-export function install(app){
-
-	return function (dispatch, getState) { 
-
-		request
-  			.get('/install')
-  			.query({name:app.name})
-  			.set('Accept', 'application/json')
-  			.type('json')
-  			.end(function(err, res){
-  				if (err){
-  					console.log(err);
-  				}else{
-  					console.log(res.body);
-  	 			}
-  	 		});		
-
-	}	
-}*/
 
 export function selectApptoInstall(appId){
 

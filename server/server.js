@@ -21,15 +21,17 @@ app.get('/', function(req,res){
 });
 
 app.get('/install/', function(req,res){
-	
-	console.log(req.query);
-
 	const apptoinstall = req.query.name;
 	return pull(apptoinstall).then((result)=>{
 		return launch(apptoinstall);
 	}).then((result)=>{
 		res.send(result);
 	});
+});
+
+//redirect any failed routes to root
+app.use(function(req,res){
+    res.redirect("/");
 });
 
 server.listen(8001);

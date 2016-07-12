@@ -14,6 +14,7 @@ html{
     height: inherit;
     display: -webkit-flex;
     display: flex;
+    -webkit-flex: 0 1 auto;
     flex: 0 1 auto;
     -webkit-flex-direction: column;
     flex-direction: column;
@@ -21,7 +22,9 @@ html{
 }
 
 .flexcolumn > div {
+    display: -webkit-flex;
     display: flex;
+     -webkit-flex: 0 1 auto;
     flex: 0 1 auto;
     border-bottom: 1px solid #b6b6b6;
  	min-height: 40px;  
@@ -31,13 +34,16 @@ html{
    
     display: -webkit-flex;
     display: flex;
+     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
     -webkit-flex-direction: row;
     flex-direction: row;
 }
 
 .flexrow > div {
+    display: -webkit-flex;
     display: flex;
+     -webkit-flex: 1 1 0;
     flex: 1 1 0;
     height: inherit;
     
@@ -49,19 +55,25 @@ html{
     text-align: center;
 }
 .flexcolumn > .headerstyle {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
     height: 40px;
 }
 
 .flexcolumn > .footerstyle {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
     height: 40px;
 }
 
 .flexrow > .title {
+    display: -webkit-flex;
 	  display: flex;
+    -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
     width: 150px;
    
@@ -73,7 +85,8 @@ html{
 }
 
 .flexrow > .header {
-	display: flex;
+    display: -webkit-flex;
+	  display: flex;
    	border-right:  1px solid #b6b6b6;
    	background: #f2f2f2;
    	text-transform: uppercase;
@@ -81,26 +94,28 @@ html{
 }
 
 .flexrow > .disabled {
-	display: flex;
+    display: -webkit-flex;
+	  display: flex;
    	background: #f2f2f2;
 }
 
 
 .flexrow  .icon {
+    display: -webkit-flex;
     display: flex;
     flex: 0 1 50px;
     width: 50px;
-	padding: 5px;
+	  padding: 5px;
 }
 
 .flexrow  .icon img{
-   
     height: 50px;
     margin: auto;
     object-fit: cover;
 }
 
 .flexrow > .submit {
+    display: -webkit-flex;
     display: flex;
     flex: 0 1 auto;
     width: 70px;
@@ -166,17 +181,10 @@ html{
 
 
 .flexcontainer{
+  display: -webkit-flex;
 	display: flex;	
 	width: inherit;
 	/*height: inherit;*/
-	-webkit-flex-direction: column;
-    flex-direction: column;
-}
-
-.repocontainer{
-	display: flex;	
-	width: inherit;
-	height: inherit;
 	-webkit-flex-direction: column;
     flex-direction: column;
 }

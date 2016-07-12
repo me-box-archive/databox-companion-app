@@ -23,6 +23,7 @@ class AppStore extends Component {
 	    	height: `calc(100vh - ${HEADER_TOOLBAR_HEIGHT + FOOTER_TOOLBAR_HEIGHT}px)`,
 	    }
 	    const headerstyle ={
+	    	WebkitFlex: '0 0 auto',
 	    	flex: '0 0 auto',
 	    	height: 60,
 	    	background: '#f2f2f2'

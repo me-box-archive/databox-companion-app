@@ -3,8 +3,6 @@ import config from '../config';
 
 export function pull(name){
 	
-	console.log("pulling " + name);
-
 	return new Promise((resolve,reject)=>{
 		
 		request

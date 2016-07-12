@@ -4,7 +4,6 @@ import configureStore from './store/configureStore';
 import Root from './containers/Root';
 import init from './comms/websocket';
 
-
 const store = configureStore();
 const {dispatch} = store;
 init("databox","testApp", dispatch);

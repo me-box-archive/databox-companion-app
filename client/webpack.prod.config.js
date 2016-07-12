@@ -1,14 +1,16 @@
 var path = require("path");
 var webpack = require("webpack");
+require("babel-polyfill");
 
 module.exports = {
+
     entry: {
-        app: './js/app.js'
+        app: ['babel-polyfill', './js/app.js'] 
     },
 
     output: {
         path: "../server/static",
-        publicPath: 'http://localhost:8080/',
+        publicPath: '/app/',
         filename: '[name].js'
     },
 
