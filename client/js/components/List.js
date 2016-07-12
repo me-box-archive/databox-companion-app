@@ -62,4 +62,9 @@ class List extends Component {
 	}
 };
 
+List.defaultProps = {
+	rows : [],
+    keys : [],	
+};
+
 export default List;

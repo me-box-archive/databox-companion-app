@@ -31,14 +31,14 @@ const app = (state, action) =>{
 			}
 
 			
-			return Object.assign({}, state, {
-				data: [...state.data, action.data]
-			})
+			return Object.assign({}, state, {data: action.data, view:action.view})
+		
 			
 		default:
 			return state;
 	}
 }
+
 
 export default function apps(state = [], action) {
   	switch (action.type) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {HEADER_TOOLBAR_HEIGHT,FOOTER_TOOLBAR_HEIGHT} from '../constants/ViewConstants';
-import '../../css/style.css';
+import '../../style/sass/style.scss';
 import cx from 'classnames';
 import List from '../components/List';
 
@@ -24,22 +24,34 @@ class AppContent extends Component {
 	    const applist = apps.map((app,i)=>{
 	    	
 	    	let dataview;
-
-	    	switch (app.view){	    		
+			
+			const data = app.data;
+			
+	    	switch (app.view){	
+	    	
+	    		case 'text':
+	    			dataview = data || "";
+	    			break;
+	    			    		
 	    		case 'list':
 	    			
-	    			const data = app.data[app.data.length-1];
-	    			const props = {title: app.name, keys: data.keys, rows: data.rows.map((row)=>{
-	    				if (row.time){
-	    					row.time = new Date(row.time).toLocaleString();
-	    				}
-	    				return row;
-	    			})};
-					dataview = <List {...props}/>
-	    			
+	    			if (data === Object(data)){ //if this is a valid javascript object
+					
+						data.keys = data.keys || [];
+						data.rows = data.rows || [];
+					
+						const props = {title: app.name, keys: data.keys, rows: data.rows.map((row)=>{
+							if (row.time){
+								row.time = new Date(row.time).toLocaleString();
+							}
+							return row;
+						})};
+						dataview = <List {...props}/>
+					}
 	    			break;
 	    	
 	    	}
+
 
 	    	const {view} =  app;
 
