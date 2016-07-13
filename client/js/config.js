@@ -5,7 +5,7 @@ module.exports = {
 	},
 
 	containermanager:{
-		API: 'http://127.0.0.1/cm'
+		API: '/cm'
 	},
 
 	registry:{
