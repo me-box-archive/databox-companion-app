@@ -41,8 +41,13 @@ class AppContent extends Component {
 						data.rows = data.rows || [];
 					
 						const props = {title: app.name, keys: data.keys, rows: data.rows.map((row)=>{
+							
 							if (row.time){
-								row.time = new Date(row.time).toLocaleString();
+								console.log(row.time);
+								const datecomponents = row.time.split("T");
+								const date = datecomponents[0];
+								const timecomponent  = datecomponents[1].split(".");
+								row.time = `${date} ${timecomponent[0]}`;
 							}
 							return row;
 						})};
