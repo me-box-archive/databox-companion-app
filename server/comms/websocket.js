@@ -30,7 +30,6 @@ export default function init(nsps, server){
       
           socket.on('disconnect', function(){
              console.log("socket disconnect!");
-             socket.leave(app);
           });
 
         });
