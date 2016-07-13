@@ -2,9 +2,6 @@ import { APP_MESSAGE } from '../constants/ActionTypes';
 
 export function newMessage(msg) {
 
-  console.log("seen message");
-  console.log(msg);
-  
   const {id, name, view, data} = msg;
  
   return {

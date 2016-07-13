@@ -39,18 +39,7 @@ class AppContent extends Component {
 					
 						data.keys = data.keys || [];
 						data.rows = data.rows || [];
-
-						//const rows = [...(data.rows || [])];
-
 						const props = {title: app.name, keys: data.keys, rows: data.rows};
-
-						 /*rows.map((row)=>{
-							
-							if (row.time){
-								row.time = new Date(row.time).toLocaleString();
-							}
-							return row;
-						})};*/
 						dataview = <List {...props}/>
 					}
 	    			break;
