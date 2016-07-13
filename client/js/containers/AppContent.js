@@ -38,15 +38,19 @@ class AppContent extends Component {
 	    			if (data === Object(data)){ //if this is a valid javascript object
 					
 						data.keys = data.keys || [];
-						const rows = [...(data.rows || [])];
+						data.rows = data.rows || [];
 
-						const props = {title: app.name, keys: data.keys, rows: rows.map((row)=>{
+						//const rows = [...(data.rows || [])];
+
+						const props = {title: app.name, keys: data.keys, rows: data.rows};
+
+						 /*rows.map((row)=>{
 							
 							if (row.time){
 								row.time = new Date(row.time).toLocaleString();
 							}
 							return row;
-						})};
+						})};*/
 						dataview = <List {...props}/>
 					}
 	    			break;
