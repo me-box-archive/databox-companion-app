@@ -14,6 +14,7 @@ export default function init(){
 		try {
 			const msg = JSON.parse(message.toString());
 			const channel = msg.channel;
+			console.log("sending to channel " + channel);
 			sendmessage(msg.channel, "databox", "message", msg.payload)
 		}
 		catch(err){
